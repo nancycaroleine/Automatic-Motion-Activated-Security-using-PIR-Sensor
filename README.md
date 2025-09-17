@@ -1,8 +1,9 @@
 # Automatic-Motion-Activated-Security-using-PIR-Sensor
 ## AIM:
-             To detect motion using a PIR sensor connected to an Arduino and trigger an LED (using the built-in LED) when motion is sensed.
+    To detect motion using a PIR sensor connected to an Arduino and trigger an LED (using the built-in LED) when motion is sensed.
              
 ## Hardware / Software Tools required:
+```
 1.	 Arduino Uno R3 – 1 No
 2.	PIR Sensor – 1 No
 3.	LED (in-built on Arduino pin 13) – 1 No
@@ -11,16 +12,19 @@
 6.	Jumper wires – As required
 7.	USB Cable – 1 No (for uploading code and powering Arduino)
 8.	Computer with Tinkercad or Arduino IDE installed
+```
 
 ## Theory:
-
+```
      Passive Infrared (PIR) sensors are electronic devices that detect motion by sensing infrared radiation emitted by objects. Every object with a temperature above absolute zero emits infrared radiation. The PIR sensor detects this radiation and can sense motion when a warm object, such as a human body, passes within its detection range. The sensor contains a pair of pyroelectric sensors housed under a Fresnel lens, which focuses the infrared signals onto the sensor surface. When the infrared levels change rapidly between the two pyroelectric sensors—such as when a person walks by—the sensor outputs a HIGH signal indicating motion detection.
 PIR sensors are widely used in motion detection systems, security alarms, automatic lighting systems, and smart surveillance. They are popular due to their low power consumption, affordability, and ease of integration with microcontrollers such as the Arduino Uno. The sensor typically has three pins: VCC (power), GND (ground), and OUT (signal). When idle, the output pin remains LOW. Once motion is detected, the sensor sends a HIGH signal to the microcontroller, which can be used to trigger a response such as turning on an LED or activating an alarm.
 In this experiment, the PIR sensor is connected to an Arduino Uno board. The VCC pin of the sensor is connected to the 5V supply of the Arduino to power the sensor. The GND pin is connected to the Arduino’s ground. The OUT pin is connected to a digital input pin (pin 2 in this case) of the Arduino. The Arduino continuously monitors the state of the signal pin. If the signal pin goes HIGH, it means the sensor has detected motion, and the Arduino is programmed to turn ON the built-in LED on pin 13. If no motion is detected, the signal remains LOW, and the LED is turned OFF.
-Circuit Diagram:
- 
-## Procedure: //Modify based on your circuit
+```
+**Circuit Diagram:**
+<img width="1920" height="1080" alt="Screenshot (310)" src="https://github.com/user-attachments/assets/40fbf286-7af6-423b-8c4c-4e7b5d8860de" />
 
+## Procedure: //Modify based on your circuit
+```
 Step 1: Set Up the Tinkercad Environment
 1.	Log in to Tinkercad: Open https://www.tinkercad.com in your browser and log in to your account.
 2.	Create a New Circuit: In the Tinkercad dashboard, click on “Circuits” and then select “Create New Circuit” to open a new simulation workspace.
@@ -58,13 +62,33 @@ Step 7: Save Your Work
 1.	Stop Simulation: Click the “Stop Simulation” button once testing is complete.
 2.	Save the Circuit: Click “Save” at the top of the screen to store your design and code for future use.
 
-
+```
 # Code:
+```
+int buttonState = 0;
+void setup()
+{
+  pinMode(2, INPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+void loop()
+{
+  buttonState = digitalRead(2);
+  if (buttonState == HIGH)
+  {
+    digitalWrite(LED_BUILTIN, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED_BUILTIN, LOW);
+  }
+  delay(10);
+}
 
-
-
+```
 # Output:
 
+<img width="1920" height="1080" alt="Screenshot (311)" src="https://github.com/user-attachments/assets/dc28b091-6999-4bf7-8182-7f2cc416aded" />
 
 
 
